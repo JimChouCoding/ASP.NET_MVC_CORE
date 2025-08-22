@@ -9,6 +9,7 @@ using CustomerWebsite.Models;
 
 namespace CustomerWebsite.Controllers
 {
+    [Route("/Customers/{action=Index}/{CustomerID?}")]
     public class CustomersController : Controller
     {
         private readonly NorthwindContext _context;
@@ -25,15 +26,15 @@ namespace CustomerWebsite.Controllers
 		}
 
 		// GET: Customers/Details/5
-		public async Task<IActionResult> Details(string id)
+		public async Task<IActionResult> Details(string CustomerID)
         {
-            if (id == null)
+            if (CustomerID == null)
             {
                 return NotFound(); //404 Not Found
 			}
 
             var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerId == id);  //找到符合條件的第一筆紀錄
+                .FirstOrDefaultAsync(m => m.CustomerId == CustomerID);  //找到符合條件的第一筆紀錄
             if (customer == null)
             {
                 return NotFound();
@@ -65,14 +66,14 @@ namespace CustomerWebsite.Controllers
         }
 
         // GET: Customers/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string CustomerID)
         {
-            if (id == null)
+            if (CustomerID == null)
             {
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = await _context.Customers.FindAsync(CustomerID);
             if (customer == null)
             {
                 return NotFound();
@@ -89,7 +90,7 @@ namespace CustomerWebsite.Controllers
         {
             if (id != customer.CustomerId)
             {
-                return NotFound();
+                return NotFound(); //404
             }
 
             if (ModelState.IsValid)
@@ -103,7 +104,7 @@ namespace CustomerWebsite.Controllers
                 {
                     if (!CustomerExists(customer.CustomerId))
                     {
-                        return NotFound();
+                        return NotFound(); //404
                     }
                     else
                     {
@@ -116,15 +117,15 @@ namespace CustomerWebsite.Controllers
         }
 
         // GET: Customers/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(string CustomerID)
         {
-            if (id == null)
+            if (CustomerID == null)
             {
                 return NotFound();
             }
 
             var customer = await _context.Customers
-                .FirstOrDefaultAsync(m => m.CustomerId == id);
+                .FirstOrDefaultAsync(m => m.CustomerId == CustomerID);
             if (customer == null)
             {
                 return NotFound();
@@ -136,21 +137,21 @@ namespace CustomerWebsite.Controllers
         // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(string CustomerID)
         {
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = await _context.Customers.FindAsync(CustomerID);
             if (customer != null)
             {
                 _context.Customers.Remove(customer);
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index));  //
         }
 
-        private bool CustomerExists(string id)
+        private bool CustomerExists(string CustomerID)
         {
-            return _context.Customers.Any(e => e.CustomerId == id);
+            return _context.Customers.Any(e => e.CustomerId == CustomerID);
         }
     }
 }
