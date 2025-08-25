@@ -1,0 +1,25 @@
+﻿@model ContactViewModel
+
+<form asp-controller="Home" asp-action="Contact">
+	<div class="container" style="width:40%">
+		<h3 class="mb-3 text-center">輸入聯絡資訊</h3>
+		<div class="form-floating mb-3">
+			<input asp-for="Name" class="form-control" placeholder="" required>
+			<label asp-for="Name" class="form-label">@Html.DisplayNameFor(m => m.Name)</label>
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div class="form-floating mb-3">
+			<input asp-for="Email" class="form-control" placeholder="">
+			<label asp-for="Email" class="form-label">@Html.DisplayNameFor(m => m.Email)</label>
+			<span asp-validation-for="Email" class="text-danger"></span>
+		</div>
+		<div class="form-floating mb-3">
+			<input asp-for="Phone" class="form-control" placeholder="">
+			<label asp-for="Phone" class="form-label">@Html.DisplayNameFor(m => m.Phone)</label>
+			<span asp-validation-for="Phone" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<button type="submit" class="btn btn-primary">提交</button>
+		</div>
+	</div>
+</form>

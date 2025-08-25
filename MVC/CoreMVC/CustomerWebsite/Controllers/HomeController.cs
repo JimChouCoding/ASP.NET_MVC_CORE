@@ -1,4 +1,5 @@
 using CustomerWebsite.Models;
+using CustomerWebsite.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -30,6 +31,25 @@ namespace CustomerWebsite.Controllers
 			//return View(_context.Customers);      //Customers.cshtml
 			NorthwindContext context = new NorthwindContext();
 			return View(context.Customers);
+		}
+		// GET : /Home/Contact
+		[HttpGet]
+		public IActionResult Contact()
+		{
+			return View();       //Contact.cshtml
+		}
+
+		// POST : /Home/Contact
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult Contact(ContactViewModel cvm)
+		{
+			if(ModelState.IsValid) //通過Server端驗證
+			{
+				//寫入資料庫
+				return RedirectToAction("Index", "Home");
+			}
+			return View(cvm);      //Contact.cshtml
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
