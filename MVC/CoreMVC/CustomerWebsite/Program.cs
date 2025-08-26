@@ -21,6 +21,17 @@ namespace CustomerWebsite
 				options.UseSqlServer(builder.Configuration.GetConnectionString("Northwind"));
 			});
 
+			builder.Services.AddSession(options =>
+			{
+				options.Cookie.Name = ".CustomerWebsite.Session"; // Set a custom session cookie name
+				options.IdleTimeout = TimeSpan.FromMinutes(5); // Set session timeout
+				options.Cookie.HttpOnly = true; // Set HttpOnly for security
+				options.Cookie.IsEssential = true; // Make the session cookie essential
+				options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+			});
+
+			builder.Services.AddDistributedMemoryCache(); //使用記憶體來儲存Session資料
+
 			builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
 			builder.Services.AddControllersWithViews();
@@ -41,10 +52,9 @@ namespace CustomerWebsite
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
-
 			app.UseRouting();
-
 			app.UseAuthorization();
+			app.UseSession(); //啟用Session功能
 
 			app.MapControllerRoute(
 				name: "default",
@@ -52,7 +62,6 @@ namespace CustomerWebsite
 
 
 			app.MapRazorPages();
-
 			app.Run();
 		}
 	}

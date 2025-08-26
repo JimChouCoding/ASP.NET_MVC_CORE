@@ -3,8 +3,10 @@
 <form asp-controller="Home" asp-action="Contact">
 	<div class="container" style="width:40%">
 		<h3 class="mb-3 text-center">輸入聯絡資訊</h3>
+		<div asp-validation-summary="All" class="mb-3 text-danger"></div>
+
 		<div class="form-floating mb-3">
-			<input asp-for="Name" class="form-control" placeholder="" required>
+			<input asp-for="Name" class="form-control" placeholder="">
 			<label asp-for="Name" class="form-label">@Html.DisplayNameFor(m => m.Name)</label>
 			<span asp-validation-for="Name" class="text-danger"></span>
 		</div>
@@ -23,3 +25,9 @@
 		</div>
 	</div>
 </form>
+
+ @section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}  
