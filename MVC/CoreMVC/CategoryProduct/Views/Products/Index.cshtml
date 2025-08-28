@@ -28,7 +28,7 @@
 		$(document).ready(function(){
 			$("table").dataTable({
 			ajax:{
-				type: "GET",
+				type: "Post",
 				url: "/Products/IndexJson",
 				dataSrc: function(data){
 					//對data加工處理
@@ -47,7 +47,6 @@
 				{data: "unitsOnOrder", width: "10%"},
 				{data: "reorderLevel", width: "10%"},
 				{data: "discontinued", width: "10%"},
-
 			],
 			fixedHeader:{
 

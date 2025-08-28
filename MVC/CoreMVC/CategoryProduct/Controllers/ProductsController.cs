@@ -24,8 +24,8 @@ namespace CategoryProduct.Controllers
             return View();
         }
 
-        // GET: Products
-        [HttpGet]
+        // POST: Products
+        [HttpPost]
         public async Task<JsonResult> IndexJson()
         {
             return Json(_context.Products);
