@@ -16,66 +16,66 @@
 	<h4>Product</h4>
 	<hr />
 	<dl class="row">
-		<dt class="col-sm-2">
+		<dt class="col-sm-3">
 			@Html.DisplayNameFor(model => model.ProductName)
 		</dt>
-		<dd class="col-sm-10">
+		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.ProductName)
 		</dd>
-		<dt class="col-sm-2">
+		<dt class="col-sm-3">
 			@Html.DisplayNameFor(model => model.SupplierId)
 		</dt>
-		<dd class="col-sm-10">
+		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.SupplierId)
 		</dd>
-		<dt class="col-sm-2">
+		<dt class="col-sm-3">
 			@Html.DisplayNameFor(model => model.QuantityPerUnit)
 		</dt>
-		<dd class="col-sm-10">
+		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.QuantityPerUnit)
 		</dd>
-		<dt class="col-sm-2">
+		<dt class="col-sm-3">
 			@Html.DisplayNameFor(model => model.UnitPrice)
 		</dt>
-		<dd class="col-sm-10">
+		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.UnitPrice)
 		</dd>
-		<dt class="col-sm-2">
+		<dt class="col-sm-3">
 			@Html.DisplayNameFor(model => model.UnitsInStock)
 		</dt>
-		<dd class="col-sm-10">
+		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.UnitsInStock)
 		</dd>
-		<dt class="col-sm-2">
+		<dt class="col-sm-3">
 			@Html.DisplayNameFor(model => model.UnitsOnOrder)
 		</dt>
-		<dd class="col-sm-10">
+		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.UnitsOnOrder)
 		</dd>
-		<dt class="col-sm-2">
+		<dt class="col-sm-3">
 			@Html.DisplayNameFor(model => model.ReorderLevel)
 		</dt>
-		<dd class="col-sm-10">
+		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.ReorderLevel)
 		</dd>
-		<dt class="col-sm-2">
+		<dt class="col-sm-3">
 			@Html.DisplayNameFor(model => model.Discontinued)
 		</dt>
-		<dd class="col-sm-10">
+		</dt>
+		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.Discontinued)
 		</dd>
-		<dt class="col-sm-2">
+		<dt class="col-sm-3">
 			@Html.DisplayNameFor(model => model.Category)
 		</dt>
-		<dd class="col-sm-10">
+		<dd class="col-sm-9">
 			@Html.DisplayFor(model => model.Category.CategoryId)
 		</dd>
 	</dl>
 
 	<form asp-action="Delete">
 		<input type="hidden" asp-for="ProductId" />
-		<input type="submit" value="Delete" class="btn btn-danger" /> |
-		<button type="submit" class="btn btn-danger" onclick="return confirm('確定要刪除嗎')"><i class="fa-solid fa-trash-can"></i>Delete</button>
+		<button type="submit" class="btn btn-danger me-2" onclick="return confirm('確定要刪除嗎')"><i class="fa-solid fa-trash-can"></i>Delete</button>
 		
 		<a asp-action="Index">Back to List</a>
 	</form>

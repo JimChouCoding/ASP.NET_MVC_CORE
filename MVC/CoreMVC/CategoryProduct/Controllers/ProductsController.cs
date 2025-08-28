@@ -21,7 +21,14 @@ namespace CategoryProduct.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            return View(_context.Products.Include(p => p.Category)); //left join
+            return View();
+        }
+
+        // GET: Products
+        [HttpGet]
+        public async Task<JsonResult> IndexJson()
+        {
+            return Json(_context.Products);
         }
 
         // GET: Products/Details/5
