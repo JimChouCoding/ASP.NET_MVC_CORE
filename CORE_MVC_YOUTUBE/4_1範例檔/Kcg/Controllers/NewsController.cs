@@ -70,13 +70,27 @@ namespace Kcg.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NewsId,Title,Contents,DepartmentId,StartDateTime,EndDateTime,InsertDateTime,InsertEmployeeId,UpdateDateTime,UpdateEmployeeId,Click,Enable")] News news)
+        public async Task<IActionResult> Create(NewsCreateDto news)
         {
             if (ModelState.IsValid)
             {
-                news.NewsId = Guid.NewGuid();
-                _context.Add(news);
+                News insert = new News()
+                {
+                    Title = news.Title,
+                    Contents = news.Contents,
+                    DepartmentId = news.DepartmentId,
+                    StartDateTime = news.StartDateTime,
+                    EndDateTime = news.EndDateTime,
+                    Click = 0,
+                    Enable = true,
+                    InsertEmployeeId = 1,
+                    UpdateEmployeeId = 1
+                };
+
+                _context.News.Add(insert);
+
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(news);
