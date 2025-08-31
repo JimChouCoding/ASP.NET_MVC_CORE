@@ -1,0 +1,17 @@
+﻿@* @{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    if(controller == "Pay")
+    {
+        Layout = "_PayLayout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+ 
+} *@
+
+@{
+    Layout = "_Layout";
+    }
+ 
