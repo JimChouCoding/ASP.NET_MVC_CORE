@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kcg.Models;
 using Kcg.Dtos;
+using Kcg.ViewModels;
 
 namespace Kcg.Controllers
 {
@@ -90,12 +91,25 @@ namespace Kcg.Controllers
                 return NotFound();
             }
 
-            var news = await _context.News.FindAsync(id);
-            if (news == null)
+            var newEditViewModel = new NewsEditViewModel();
+			newEditViewModel.News = await (from a in _context.News
+							  where a.NewsId == id
+							  select new NewsEditDto
+							  {
+								  EndDateTime = a.EndDateTime,
+								  NewsId = a.NewsId,
+								  StartDateTime = a.StartDateTime,
+								  Title = a.Title,
+								  Contents = a.Contents,
+								  DepartmentId = a.DepartmentId
+							  }).SingleOrDefaultAsync();
+            newEditViewModel.Departments = await _context.Department.ToListAsync();
+
+			if (newEditViewModel.News == null)
             {
                 return NotFound();
             }
-            return View(news);
+            return View(newEditViewModel);
         }
 
         // POST: News/Edit/5
