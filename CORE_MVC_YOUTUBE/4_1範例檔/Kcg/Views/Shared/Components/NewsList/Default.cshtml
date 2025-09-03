@@ -1,0 +1,8 @@
+﻿@model IEnumerable<NewsDto>
+@foreach (var item in Model)
+{
+    <div>
+        @await Html.PartialAsync("NewsBox", item)
+    </div>
+}
+<div style="clear:both"></div>

@@ -1,0 +1,27 @@
+﻿@model NewsDto
+
+<div class="box">
+        <div class="topLine">
+        </div>
+        <div class="divisionZone">@Model.DepartmentName</div>
+        <div class="ImageZone">
+            <img src="/news.jpg" loading="lazy">
+            <div class="dateZone">
+                <span>@Model.StartDateTime.ToString("yyyy-MM-dd")</span>
+            </div>
+        </div>
+        <div class="textZone">
+            <div class="titleBox">
+                @Model.Title
+            </div>
+            <hr>
+            <div class="contentBox">
+                @Model.Contents
+            </div>
+        </div>
+        <div class="detailZone">
+            <a href="/news2/edit/@Model.NewsId" rel="noopener noreferrer" target="_blank">
+                詳細資料
+            </a>
+        </div>
+    </div>

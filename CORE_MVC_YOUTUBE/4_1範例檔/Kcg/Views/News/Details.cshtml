@@ -1,4 +1,4 @@
-﻿@model Kcg.Models.News
+﻿@model NewsDto
 
 @{
     ViewData["Title"] = "Details";
@@ -23,10 +23,10 @@
             @Html.DisplayFor(model => model.Contents)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DepartmentId)
+            @Html.DisplayNameFor(model => model.DepartmentName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DepartmentId)
+            @Html.DisplayFor(model => model.DepartmentName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.StartDateTime)
@@ -40,30 +40,16 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.EndDateTime)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InsertDateTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InsertDateTime)
+   
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InsertEmployeeId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InsertEmployeeId)
-        </dd>
+    
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.UpdateDateTime)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.UpdateDateTime)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdateEmployeeId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UpdateEmployeeId)
-        </dd>
+
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Click)
         </dt>

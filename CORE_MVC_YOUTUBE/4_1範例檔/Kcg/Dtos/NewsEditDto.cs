@@ -1,17 +1,19 @@
-﻿namespace Kcg.Dtos
+﻿using Kcg.ValidationAttributes;
+using Newtonsoft.Json.Linq;
+
+namespace Kcg.Dtos
 {
-    public class NewsDto
+    [StartAndEnd(Value = "'這是傳值'")]
+    public class NewsEditDto
     {
         public Guid NewsId { get; set; }
-        
+        [NewsTitle]
         public string Title { get; set; }
         public string Contents { get; set; }
-        public string DepartmentName { get; set; }
+        public int DepartmentId { get; set; }
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
-        public DateTime UpdateDateTime { get; set; }
-        public string UpdateEmployeeName { get; set; }
-        public int Click { get; set; }
+       
         public bool Enable { get; set; }
     }
 }

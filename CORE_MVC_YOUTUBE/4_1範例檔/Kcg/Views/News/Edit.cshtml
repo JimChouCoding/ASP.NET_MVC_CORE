@@ -1,4 +1,5 @@
-﻿@model Kcg.Models.News
+﻿@using Kcg.ViewModels
+@model NewsEditViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,62 +13,47 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="NewsId" />
+
+            <input type="hidden" asp-for="News.NewsId" />
+
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+                <label asp-for="News.Title" class="control-label"></label>
+                <input asp-for="News.Title" class="form-control" />
+                <span asp-validation-for="News.Title" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="Contents" class="control-label"></label>
-                <input asp-for="Contents" class="form-control" />
-                <span asp-validation-for="Contents" class="text-danger"></span>
+                <label asp-for="News.Contents" class="control-label"></label>
+                <input asp-for="News.Contents" class="form-control" />
+                <span asp-validation-for="News.Contents" class="text-danger"></span>
             </div>
+
+           <div class="form-group">
+                <labelasp-for="News.DepartmentId" class="control-label"></label>
+                <select asp-for="News.DepartmentId"
+                        asp-items="@(new SelectList(Model.Departments, "DepartmentId", "Name"))"
+                       class="form-select"></select>
+                <span asp-validation-for="News.DepartmentId" class="text-danger"></span>
+            </div> 
+
             <div class="form-group">
-                <label asp-for="DepartmentId" class="control-label"></label>
-                <input asp-for="DepartmentId" class="form-control" />
-                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                <label asp-for="News.StartDateTime" class="control-label"></label>
+                <input asp-for="News.StartDateTime" class="form-control" />
+                <span asp-validation-for="News.StartDateTime" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="StartDateTime" class="control-label"></label>
-                <input asp-for="StartDateTime" class="form-control" />
-                <span asp-validation-for="StartDateTime" class="text-danger"></span>
+                <label asp-for="News.EndDateTime" class="control-label"></label>
+                <input asp-for="News.EndDateTime" class="form-control" />
+                <span asp-validation-for="News.EndDateTime" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="EndDateTime" class="control-label"></label>
-                <input asp-for="EndDateTime" class="form-control" />
-                <span asp-validation-for="EndDateTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="InsertDateTime" class="control-label"></label>
-                <input asp-for="InsertDateTime" class="form-control" />
-                <span asp-validation-for="InsertDateTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="InsertEmployeeId" class="control-label"></label>
-                <input asp-for="InsertEmployeeId" class="form-control" />
-                <span asp-validation-for="InsertEmployeeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdateDateTime" class="control-label"></label>
-                <input asp-for="UpdateDateTime" class="form-control" />
-                <span asp-validation-for="UpdateDateTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdateEmployeeId" class="control-label"></label>
-                <input asp-for="UpdateEmployeeId" class="form-control" />
-                <span asp-validation-for="UpdateEmployeeId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Click" class="control-label"></label>
-                <input asp-for="Click" class="form-control" />
-                <span asp-validation-for="Click" class="text-danger"></span>
-            </div>
+
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Enable" /> @Html.DisplayNameFor(model => model.Enable)
+                    <input asp-for="News.Enable" class="form-check-input" /> 啟用
                 </label>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
