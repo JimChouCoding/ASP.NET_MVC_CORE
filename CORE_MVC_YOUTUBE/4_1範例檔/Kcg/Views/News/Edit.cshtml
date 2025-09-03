@@ -1,4 +1,4 @@
-﻿@using Kcg.ViewModels
+@using Kcg.ViewModels
 @model NewsEditViewModel
 
 @{
@@ -10,51 +10,55 @@
 <h4>News</h4>
 <hr />
 <div class="row">
-	<div class="col-md-4">
-		<form asp-action="Edit">
-			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-			<input type="hidden" asp-for="News.NewsId" />
-			<div class="form-group">
-				<label asp-for="News.Title" class="control-label"></label>
-				<input asp-for="News.Title" class="form-control" />
-				<span asp-validation-for="News.Title" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="News.Contents" class="control-label"></label>
-				<input asp-for="News.Contents" class="form-control" />
-				<span asp-validation-for="News.Contents" class="text-danger"></span>
-			</div>
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-			<div class="form-group">
-				<label asp-for="News.DepartmentId" class="control-label"></label>
-				<select name="News.DepartmentId" class="form-select">
-					@foreach (var temp in Model.Departments)
-					{
-						<option value="@temp.DepartmentId">@temp.Name</option>
-					}
-				</select>
-				<span asp-validation-for="News.DepartmentId" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="News.StartDateTime" class="control-label"></label>
-				<input asp-for="News.StartDateTime" class="form-control" />
-				<span asp-validation-for="News.StartDateTime" class="text-danger"></span>
-			</div>
-			<div class="form-group">
-				<label asp-for="News.EndDateTime" class="control-label"></label>
-				<input asp-for="News.EndDateTime" class="form-control" />
-				<span asp-validation-for="News.EndDateTime" class="text-danger"></span>
-			</div>
-			<div class="form-group form-check">
-				<label class="form-check-label">
-					<input class="form-check-input" asp-for="News.Enable" /> @Html.DisplayNameFor(model => model.Enable)
-				</label>
-			</div>
-			<div class="form-group">
-				<input type="submit" value="Save" class="btn btn-primary" />
-			</div>
-		</form>
-	</div>
+            <input type="hidden" asp-for="News.NewsId" />
+
+            <div class="form-group">
+                <label asp-for="News.Title" class="control-label"></label>
+                <input asp-for="News.Title" class="form-control" />
+                <span asp-validation-for="News.Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="News.Contents" class="control-label"></label>
+                <input asp-for="News.Contents" class="form-control" />
+                <span asp-validation-for="News.Contents" class="text-danger"></span>
+            </div>
+
+           <div class="form-group">
+                <labelasp-for="News.DepartmentId" class="control-label"></label>
+                <select asp-for="News.DepartmentId"
+                        asp-items="@(new SelectList(Model.Departments, "DepartmentId", "Name"))"
+                       class="form-select"></select>
+                <span asp-validation-for="News.DepartmentId" class="text-danger"></span>
+            </div> 
+
+            <div class="form-group">
+                <label asp-for="News.StartDateTime" class="control-label"></label>
+                <input asp-for="News.StartDateTime" class="form-control" />
+                <span asp-validation-for="News.StartDateTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="News.EndDateTime" class="control-label"></label>
+                <input asp-for="News.EndDateTime" class="form-control" />
+                <span asp-validation-for="News.EndDateTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input asp-for="News.Enable" class="form-check-input" /> 啟用
+                </label>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
 </div>
 
 <div>
